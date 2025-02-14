@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1. Business Undestanding</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="crisp-dm_files/libs/clipboard/clipboard.min.js"></script>
+<script src="crisp-dm_files/libs/quarto-html/quarto.js"></script>
+<script src="crisp-dm_files/libs/quarto-html/popper.min.js"></script>
+<script src="crisp-dm_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="crisp-dm_files/libs/quarto-html/anchor.min.js"></script>
+<link href="crisp-dm_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="crisp-dm_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="crisp-dm_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="crisp-dm_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="crisp-dm_files/libs/bootstrap/bootstrap-8a79a254b8e706d3c925cde0a310d4f0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>1. Business Undestanding</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Objetivo</strong>: Investigar o percentual de prefeitos e governadores eleitos por cada partido desde 2006 até 2024.</p>
+<section id="data-undestanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-undestanding"><strong>2. Data Undestanding</strong></h2>
+<section id="coleta-dos-dados" class="level3">
+<h3 class="anchored" data-anchor-id="coleta-dos-dados"><strong>Coleta dos Dados</strong></h3>
+<section id="bibliotecas" class="level4">
+<h4 class="anchored" data-anchor-id="bibliotecas">Bibliotecas</h4>
+<div id="cell-6" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> basedosdados <span class="im">as</span> bd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importação" class="level4">
+<h4 class="anchored" data-anchor-id="importação">Importação</h4>
+<div id="cell-8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT * FROM `basedosdados.br_tse_eleicoes.resultados_candidato_municipio` </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE cargo = 'prefeito' OR cargo = 'governador'</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> bd.read_sql(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> query,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    billing_project_id<span class="op">=</span><span class="st">"resultado-eleicoes-br"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading: 100%|██████████|</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="descrição-dos-dados" class="level3">
+<h3 class="anchored" data-anchor-id="descrição-dos-dados"><strong>Descrição dos Dados</strong></h3>
+<section id="colunas" class="level4">
+<h4 class="anchored" data-anchor-id="colunas">Colunas</h4>
+<div id="cell-11" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 443830 entries, 0 to 443829
+Data columns (total 16 columns):
+ #   Column                      Non-Null Count   Dtype 
+---  ------                      --------------   ----- 
+ 0   ano                         443830 non-null  Int64 
+ 1   turno                       443830 non-null  Int64 
+ 2   id_eleicao                  443830 non-null  object
+ 3   tipo_eleicao                443830 non-null  object
+ 4   data_eleicao                443830 non-null  dbdate
+ 5   sigla_uf                    443830 non-null  object
+ 6   id_municipio                443824 non-null  object
+ 7   id_municipio_tse            443830 non-null  object
+ 8   cargo                       443830 non-null  object
+ 9   numero_partido              443830 non-null  object
+ 10  sigla_partido               443830 non-null  object
+ 11  titulo_eleitoral_candidato  436428 non-null  object
+ 12  sequencial_candidato        443829 non-null  object
+ 13  numero_candidato            443830 non-null  object
+ 14  resultado                   443814 non-null  object
+ 15  votos                       443830 non-null  Int64 
+dtypes: Int64(3), dbdate(1), object(12)
+memory usage: 55.4+ MB</code></pre>
+</div>
+</div>
+</section>
+<section id="variáveis-contínuas" class="level4">
+<h4 class="anchored" data-anchor-id="variáveis-contínuas">Variáveis Contínuas</h4>
+<div id="cell-13" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ano</th>
+<th data-quarto-table-cell-role="th">turno</th>
+<th data-quarto-table-cell-role="th">votos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>443830.0</td>
+<td>443830.0</td>
+<td>443830.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2010.095843</td>
+<td>1.088825</td>
+<td>4122.084875</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>8.767365</td>
+<td>0.284491</td>
+<td>35920.08178</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1994.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>2002.0</td>
+<td>1.0</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2010.0</td>
+<td>1.0</td>
+<td>562.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2018.0</td>
+<td>1.0</td>
+<td>2497.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2024.0</td>
+<td>2.0</td>
+<td>3885416.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="variáveis-categóricas" class="level4">
+<h4 class="anchored" data-anchor-id="variáveis-categóricas">Variáveis Categóricas</h4>
+<div id="cell-15" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">'object'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id_eleicao</th>
+<th data-quarto-table-cell-role="th">tipo_eleicao</th>
+<th data-quarto-table-cell-role="th">sigla_uf</th>
+<th data-quarto-table-cell-role="th">id_municipio</th>
+<th data-quarto-table-cell-role="th">id_municipio_tse</th>
+<th data-quarto-table-cell-role="th">cargo</th>
+<th data-quarto-table-cell-role="th">numero_partido</th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">titulo_eleitoral_candidato</th>
+<th data-quarto-table-cell-role="th">sequencial_candidato</th>
+<th data-quarto-table-cell-role="th">numero_candidato</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>443830</td>
+<td>443830</td>
+<td>443830</td>
+<td>443824</td>
+<td>443830</td>
+<td>443830</td>
+<td>443830</td>
+<td>443830</td>
+<td>436428</td>
+<td>443829</td>
+<td>443830</td>
+<td>443814</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">unique</td>
+<td>484</td>
+<td>446</td>
+<td>27</td>
+<td>5570</td>
+<td>5572</td>
+<td>2</td>
+<td>40</td>
+<td>56</td>
+<td>69460</td>
+<td>77848</td>
+<td>55</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">top</td>
+<td>546</td>
+<td>eleicao ordinaria</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>governador</td>
+<td>15</td>
+<td>PT</td>
+<td>000087950655</td>
+<td>10000</td>
+<td>15</td>
+<td>nao eleito</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">freq</td>
+<td>48173</td>
+<td>440352</td>
+<td>71301</td>
+<td>204</td>
+<td>204</td>
+<td>331979</td>
+<td>52159</td>
+<td>46006</td>
+<td>2794</td>
+<td>2539</td>
+<td>47970</td>
+<td>322479</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="análise-exploratória-dos-dados" class="level3">
+<h3 class="anchored" data-anchor-id="análise-exploratória-dos-dados"><strong>Análise Exploratória dos Dados</strong></h3>
+<section id="id-de-são-paulo-sp" class="level4">
+<h4 class="anchored" data-anchor-id="id-de-são-paulo-sp">ID de São Paulo (SP)</h4>
+<p>Vamos tentar encontrar o id do município de São Paulo (SP) por meio do resultado eleitoral de 2024. Sabemos que tivemos um segundo turno entre Ricardo Nunes (MDB) e Guilherme Boulos (PSOL). Com alguns filtros, podemos encontrar os resultados dessa disputa.</p>
+<div id="cell-19" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>) <span class="op">&amp;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'cargo'</span>] <span class="op">==</span> <span class="st">'prefeito'</span>) <span class="op">&amp;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'sigla_uf'</span>] <span class="op">==</span> <span class="st">'SP'</span>) <span class="op">&amp;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    ((df[<span class="st">'numero_candidato'</span>] <span class="op">==</span> <span class="st">"15"</span>) <span class="op">|</span> (df[<span class="st">'numero_candidato'</span>] <span class="op">==</span> <span class="st">"50"</span>)) <span class="op">&amp;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'turno'</span>] <span class="op">==</span> <span class="dv">2</span>) <span class="op">&amp;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'votos'</span>] <span class="op">&gt;</span> <span class="dv">1000000</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>].sort_values(by<span class="op">=</span><span class="st">'id_municipio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ano</th>
+<th data-quarto-table-cell-role="th">turno</th>
+<th data-quarto-table-cell-role="th">id_eleicao</th>
+<th data-quarto-table-cell-role="th">tipo_eleicao</th>
+<th data-quarto-table-cell-role="th">data_eleicao</th>
+<th data-quarto-table-cell-role="th">sigla_uf</th>
+<th data-quarto-table-cell-role="th">id_municipio</th>
+<th data-quarto-table-cell-role="th">id_municipio_tse</th>
+<th data-quarto-table-cell-role="th">cargo</th>
+<th data-quarto-table-cell-role="th">numero_partido</th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">titulo_eleitoral_candidato</th>
+<th data-quarto-table-cell-role="th">sequencial_candidato</th>
+<th data-quarto-table-cell-role="th">numero_candidato</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">votos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">352499</td>
+<td>2024</td>
+<td>2</td>
+<td>620</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-27</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>15</td>
+<td>MDB</td>
+<td>113912050167</td>
+<td>250002098117</td>
+<td>15</td>
+<td>eleito</td>
+<td>3393110</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">358840</td>
+<td>2024</td>
+<td>2</td>
+<td>620</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-27</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>50</td>
+<td>PSOL</td>
+<td>195710880167</td>
+<td>250001926547</td>
+<td>50</td>
+<td>nao eleito</td>
+<td>2323901</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><em>Voilà</em>! O id (IBGE) do município de São Paulo (SP) é “3550308”. Vamos salvá-lo em uma variável.</p>
+<div id="cell-21" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>id_muni_sp <span class="op">=</span> <span class="st">"3550308"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vamos, agora, analisar os resultados para as eleições de 2024 em São Paulo (SP).</p>
+<div id="cell-23" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024 <span class="op">=</span> df[</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'id_municipio'</span>] <span class="op">==</span> id_muni_sp) <span class="op">&amp;</span> (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>].sort_values(by<span class="op">=</span><span class="st">'turno'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>muni_sp_2024</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ano</th>
+<th data-quarto-table-cell-role="th">turno</th>
+<th data-quarto-table-cell-role="th">id_eleicao</th>
+<th data-quarto-table-cell-role="th">tipo_eleicao</th>
+<th data-quarto-table-cell-role="th">data_eleicao</th>
+<th data-quarto-table-cell-role="th">sigla_uf</th>
+<th data-quarto-table-cell-role="th">id_municipio</th>
+<th data-quarto-table-cell-role="th">id_municipio_tse</th>
+<th data-quarto-table-cell-role="th">cargo</th>
+<th data-quarto-table-cell-role="th">numero_partido</th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">titulo_eleitoral_candidato</th>
+<th data-quarto-table-cell-role="th">sequencial_candidato</th>
+<th data-quarto-table-cell-role="th">numero_candidato</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">votos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">352498</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>15</td>
+<td>MDB</td>
+<td>113912050167</td>
+<td>250002098117</td>
+<td>15</td>
+<td>2º turno</td>
+<td>1801139</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">352649</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>16</td>
+<td>PSTU</td>
+<td>227870560159</td>
+<td>250002078851</td>
+<td>16</td>
+<td>nao eleito</td>
+<td>3017</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">355221</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>27</td>
+<td>DC</td>
+<td>095285460167</td>
+<td>250002355541</td>
+<td>27</td>
+<td>nao eleito</td>
+<td>833</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">355280</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>28</td>
+<td>PRTB</td>
+<td>049143831023</td>
+<td>250001978066</td>
+<td>28</td>
+<td>nao eleito</td>
+<td>1719274</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">355520</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>30</td>
+<td>NOVO</td>
+<td>014749662011</td>
+<td>250001884312</td>
+<td>30</td>
+<td>nao eleito</td>
+<td>84212</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">355325</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>29</td>
+<td>PCO</td>
+<td>430484530141</td>
+<td>250002362195</td>
+<td>29</td>
+<td>nao eleito</td>
+<td>960</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">356567</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>40</td>
+<td>PSB</td>
+<td>392700900159</td>
+<td>250002163891</td>
+<td>40</td>
+<td>nao eleito</td>
+<td>605552</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">358636</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>45</td>
+<td>PSDB</td>
+<td>126230350183</td>
+<td>250002180213</td>
+<td>45</td>
+<td>nao eleito</td>
+<td>112344</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">361331</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>80</td>
+<td>UP</td>
+<td>338181630167</td>
+<td>250002031025</td>
+<td>80</td>
+<td>nao eleito</td>
+<td>5593</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">358839</td>
+<td>2024</td>
+<td>1</td>
+<td>619</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-06</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>50</td>
+<td>PSOL</td>
+<td>195710880167</td>
+<td>250001926547</td>
+<td>50</td>
+<td>2º turno</td>
+<td>1776127</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">352499</td>
+<td>2024</td>
+<td>2</td>
+<td>620</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-27</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>15</td>
+<td>MDB</td>
+<td>113912050167</td>
+<td>250002098117</td>
+<td>15</td>
+<td>eleito</td>
+<td>3393110</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">358840</td>
+<td>2024</td>
+<td>2</td>
+<td>620</td>
+<td>eleicao ordinaria</td>
+<td>2024-10-27</td>
+<td>SP</td>
+<td>3550308</td>
+<td>71072</td>
+<td>prefeito</td>
+<td>50</td>
+<td>PSOL</td>
+<td>195710880167</td>
+<td>250001926547</td>
+<td>50</td>
+<td>nao eleito</td>
+<td>2323901</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Vamos ver o resultado eleitoral por partido.</p>
+<div id="cell-25" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024.<span class="op">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>]).<span class="op">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    size().<span class="op">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    reset_index(name<span class="op">=</span><span class="st">'total'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>DC</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>MDB</td>
+<td>2º turno</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>NOVO</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PCO</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>PRTB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>PSB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>PSDB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>PSOL</td>
+<td>2º turno</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>PSOL</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>PSTU</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>UP</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Os resultados acima mostram um possível problema para a nossa análise. Em cidades onde houve 2º turno, o mesmo partido se repete duas vezes: uma para o resultado do primeiro turno e outra para o resultado do segundo turno. Nosso propósito é ver o percentual de eleitos e não eleito por partido, então se tiver tido 2T, precisamos retirar as linhas dos dois candidatos cujo resultado é “2º Turno”.</p>
+<div id="cell-27" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024 <span class="op">=</span> muni_sp_2024[</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    muni_sp_2024[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>muni_sp_2024.<span class="op">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>]).<span class="op">\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    size().<span class="op">\</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    reset_index(name<span class="op">=</span><span class="st">'total'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>DC</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>NOVO</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PCO</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PRTB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>PSB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>PSDB</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>PSOL</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>PSTU</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>UP</td>
+<td>nao eleito</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="estado-de-são-paulo-2024" class="level4">
+<h4 class="anchored" data-anchor-id="estado-de-são-paulo-2024">Estado de São Paulo (2024)</h4>
+<p>Agora, sim! Vamos ver o percentual de eleitos e não eleitos no Estado de São Paulo.</p>
+<div id="cell-30" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtra somente as eleições de 2024 em SP e retira os resultados de 2º turno para não</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># poluir o percentual de eleitos x não eleitos</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>est_sp_2024 <span class="op">=</span> df[</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>) <span class="op">&amp;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'sigla_uf'</span>] <span class="op">==</span> <span class="st">'SP'</span>) <span class="op">&amp;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupa o df por partido e cria uma coluna com o total de candidatos eleitos e não eleitos</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>est_sp_2024 <span class="op">=</span> est_sp_2024.<span class="op">\</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>]).<span class="op">\</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    size().<span class="op">\</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    reset_index(name<span class="op">=</span><span class="st">'total'</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Cria coluna com o total de candidatos por partido</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>est_sp_2024[<span class="st">'total_partido'</span>] <span class="op">=</span>est_sp_2024.<span class="op">\</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    groupby(<span class="st">'sigla_partido'</span>)[<span class="st">'total'</span>].<span class="op">\</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    transform(<span class="st">'sum'</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Cria coluna de percentual</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>est_sp_2024[<span class="st">'percentual'</span>] <span class="op">=</span> (est_sp_2024[<span class="st">'total'</span>]  <span class="op">/</span> est_sp_2024[<span class="st">'total_partido'</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>est_sp_2024[est_sp_2024[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span>].sort_values(by<span class="op">=</span>[<span class="st">'percentual'</span>], ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">total_partido</th>
+<th data-quarto-table-cell-role="th">percentual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">29</td>
+<td>PSD</td>
+<td>eleito</td>
+<td>206</td>
+<td>396</td>
+<td>52.020202</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">39</td>
+<td>REPUBLICANOS</td>
+<td>eleito</td>
+<td>82</td>
+<td>205</td>
+<td>40.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>67</td>
+<td>174</td>
+<td>38.505747</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>PP</td>
+<td>eleito</td>
+<td>47</td>
+<td>124</td>
+<td>37.903226</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
+<td>PL</td>
+<td>eleito</td>
+<td>104</td>
+<td>287</td>
+<td>36.236934</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>CIDADANIA</td>
+<td>eleito</td>
+<td>5</td>
+<td>15</td>
+<td>33.333333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">31</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>21</td>
+<td>65</td>
+<td>32.307692</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20</td>
+<td>PODE</td>
+<td>eleito</td>
+<td>31</td>
+<td>109</td>
+<td>28.440367</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">43</td>
+<td>UNIÃO</td>
+<td>eleito</td>
+<td>34</td>
+<td>124</td>
+<td>27.419355</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">41</td>
+<td>SOLIDARIEDADE</td>
+<td>eleito</td>
+<td>4</td>
+<td>32</td>
+<td>12.500000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AVANTE</td>
+<td>eleito</td>
+<td>2</td>
+<td>18</td>
+<td>11.111111</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>PSB</td>
+<td>eleito</td>
+<td>9</td>
+<td>87</td>
+<td>10.344828</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>NOVO</td>
+<td>eleito</td>
+<td>4</td>
+<td>41</td>
+<td>9.756098</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>PDT</td>
+<td>eleito</td>
+<td>4</td>
+<td>41</td>
+<td>9.756098</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>PRD</td>
+<td>eleito</td>
+<td>2</td>
+<td>24</td>
+<td>8.333333</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>MOBILIZA</td>
+<td>eleito</td>
+<td>1</td>
+<td>22</td>
+<td>4.545455</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>PT</td>
+<td>eleito</td>
+<td>4</td>
+<td>135</td>
+<td>2.962963</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>maiores_perc <span class="op">=</span> est_sp_2024[</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    est_sp_2024[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    ].<span class="op">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    sort_values(by<span class="op">=</span>[<span class="st">'percentual'</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>maiores_perc <span class="op">=</span> maiores_perc[<span class="st">'sigla_partido'</span>].values</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>maiores_perc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>array(['PSD', 'REPUBLICANOS', 'MDB', 'PP', 'PL', 'CIDADANIA', 'PSDB',
+       'PODE', 'UNIÃO', 'SOLIDARIEDADE', 'AVANTE', 'PSB', 'NOVO', 'PDT',
+       'PRD', 'MOBILIZA', 'PT'], dtype=object)</code></pre>
+</div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plot.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>est_sp_2024[est_sp_2024[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span>],</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'sigla_partido'</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'percentual'</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    order<span class="op">=</span>maiores_perc,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'lightblue'</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plot.title(<span class="st">'Percentual de prefeitos eleitos no Estado de SP'</span>, loc<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plot.ylabel(<span class="st">''</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plot.xlabel(<span class="st">'Percentual'</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plot.xlim([<span class="dv">0</span>,<span class="dv">60</span>])</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> container <span class="kw">in</span> ax.containers:</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    ax.bar_label(</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        container<span class="op">=</span>container,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>[<span class="ss">f'</span><span class="sc">{</span>val<span class="sc">:.1f}</span><span class="ss">%'</span> <span class="cf">for</span> val <span class="kw">in</span> container.datavalues],</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        padding<span class="op">=</span><span class="dv">5</span> <span class="co"># Ajusta o espaço entre o rótulo e a barra</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="crisp-dm_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="brasil-2024" class="level4">
+<h4 class="anchored" data-anchor-id="brasil-2024">Brasil (2024)</h4>
+<p>Agora vamos visualizar o percentual de prefeitos eleitos em 2024 por partido no Brasil inteiro!</p>
+<div id="cell-35" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>brasil_2024 <span class="op">=</span> df[</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>) <span class="op">&amp;</span> (df[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>brasil_2024 <span class="op">=</span> brasil_2024.<span class="op">\</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>]).<span class="op">\</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    size().<span class="op">\</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    reset_index(name<span class="op">=</span><span class="st">'total'</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>brasil_2024[<span class="st">'total_partido'</span>] <span class="op">=</span> brasil_2024.<span class="op">\</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    groupby(<span class="st">'sigla_partido'</span>)[<span class="st">'total'</span>].<span class="op">\</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    transform(<span class="st">'sum'</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>brasil_2024[<span class="st">'percentual'</span>] <span class="op">=</span> (brasil_2024[<span class="st">'total'</span>] <span class="op">/</span> brasil_2024[<span class="st">'total_partido'</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>brasil_2024 <span class="op">=</span> brasil_2024[brasil_2024[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span>]</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiza</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>brasil_2024.sort_values(by<span class="op">=</span><span class="st">'percentual'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">total_partido</th>
+<th data-quarto-table-cell-role="th">percentual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>PSD</td>
+<td>eleito</td>
+<td>884</td>
+<td>1707</td>
+<td>51.786760</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">26</td>
+<td>PP</td>
+<td>eleito</td>
+<td>747</td>
+<td>1486</td>
+<td>50.269179</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">50</td>
+<td>UNIÃO</td>
+<td>eleito</td>
+<td>583</td>
+<td>1250</td>
+<td>46.640000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>855</td>
+<td>1874</td>
+<td>45.624333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>REPUBLICANOS</td>
+<td>eleito</td>
+<td>432</td>
+<td>1079</td>
+<td>40.037071</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>PSB</td>
+<td>eleito</td>
+<td>309</td>
+<td>776</td>
+<td>39.819588</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>274</td>
+<td>702</td>
+<td>39.031339</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AVANTE</td>
+<td>eleito</td>
+<td>136</td>
+<td>373</td>
+<td>36.461126</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>PL</td>
+<td>eleito</td>
+<td>514</td>
+<td>1465</td>
+<td>35.085324</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">14</td>
+<td>PC do B</td>
+<td>eleito</td>
+<td>19</td>
+<td>55</td>
+<td>34.545455</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>CIDADANIA</td>
+<td>eleito</td>
+<td>32</td>
+<td>106</td>
+<td>30.188679</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>PODE</td>
+<td>eleito</td>
+<td>127</td>
+<td>484</td>
+<td>26.239669</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>PRD</td>
+<td>eleito</td>
+<td>76</td>
+<td>296</td>
+<td>25.675676</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>PDT</td>
+<td>eleito</td>
+<td>151</td>
+<td>602</td>
+<td>25.083056</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">48</td>
+<td>SOLIDARIEDADE</td>
+<td>eleito</td>
+<td>63</td>
+<td>278</td>
+<td>22.661871</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">40</td>
+<td>PT</td>
+<td>eleito</td>
+<td>251</td>
+<td>1356</td>
+<td>18.510324</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>MOBILIZA</td>
+<td>eleito</td>
+<td>21</td>
+<td>136</td>
+<td>15.441176</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">42</td>
+<td>PV</td>
+<td>eleito</td>
+<td>14</td>
+<td>92</td>
+<td>15.217391</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>NOVO</td>
+<td>eleito</td>
+<td>19</td>
+<td>235</td>
+<td>8.085106</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">44</td>
+<td>REDE</td>
+<td>eleito</td>
+<td>4</td>
+<td>95</td>
+<td>4.210526</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>AGIR</td>
+<td>eleito</td>
+<td>3</td>
+<td>78</td>
+<td>3.846154</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>PMB</td>
+<td>eleito</td>
+<td>2</td>
+<td>66</td>
+<td>3.030303</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>DC</td>
+<td>eleito</td>
+<td>2</td>
+<td>90</td>
+<td>2.222222</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30</td>
+<td>PRTB</td>
+<td>eleito</td>
+<td>1</td>
+<td>66</td>
+<td>1.515152</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>A tabela acima mostra o percentual de prefeitos eleitos por partido para o ano de 2024.PSD, PP e União Brasil foram os partidos com as maiores taxas de aproveitamento.</p>
+</section>
+<section id="brasil-1996-2024" class="level4">
+<h4 class="anchored" data-anchor-id="brasil-1996-2024">Brasil (1996-2024)</h4>
+<p>Vamos ver agora o percentual de aproveitamento de cada partido ao longo de toda a série histórica disponível.</p>
+<div id="cell-39" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>brasil_pref <span class="op">=</span> df[</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'cargo'</span>] <span class="op">==</span> <span class="st">'prefeito'</span>) <span class="op">&amp;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>brasil_pref <span class="op">=</span> brasil_pref.<span class="op">\</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>, <span class="st">'ano'</span>]).size().reset_index(name<span class="op">=</span><span class="st">'total'</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>brasil_pref[<span class="st">'total_partido'</span>] <span class="op">=</span> brasil_pref.<span class="op">\</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'ano'</span>])[<span class="st">'total'</span>].transform(<span class="st">'sum'</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>brasil_pref[<span class="st">'percentual'</span>] <span class="op">=</span> (brasil_pref[<span class="st">'total'</span>] <span class="op">/</span> brasil_pref[<span class="st">'total_partido'</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>brasil_pref <span class="op">=</span> brasil_pref[brasil_pref[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-40" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>brasil_pref.sort_values(by<span class="op">=</span><span class="st">'percentual'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sigla_partido</th>
+<th data-quarto-table-cell-role="th">resultado</th>
+<th data-quarto-table-cell-role="th">ano</th>
+<th data-quarto-table-cell-role="th">total</th>
+<th data-quarto-table-cell-role="th">total_partido</th>
+<th data-quarto-table-cell-role="th">percentual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">98</td>
+<td>PFL</td>
+<td>eleito</td>
+<td>1996</td>
+<td>35</td>
+<td>59</td>
+<td>59.322034</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">282</td>
+<td>PSD</td>
+<td>eleito</td>
+<td>2024</td>
+<td>884</td>
+<td>1707</td>
+<td>51.786760</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">171</td>
+<td>PP</td>
+<td>eleito</td>
+<td>2024</td>
+<td>747</td>
+<td>1486</td>
+<td>50.269179</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">170</td>
+<td>PP</td>
+<td>eleito</td>
+<td>2020</td>
+<td>705</td>
+<td>1467</td>
+<td>48.057260</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">294</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>2016</td>
+<td>815</td>
+<td>1704</td>
+<td>47.828638</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">290</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>2000</td>
+<td>990</td>
+<td>2078</td>
+<td>47.641963</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>PMDB</td>
+<td>eleito</td>
+<td>2008</td>
+<td>1232</td>
+<td>2615</td>
+<td>47.112811</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">167</td>
+<td>PP</td>
+<td>eleito</td>
+<td>2008</td>
+<td>563</td>
+<td>1203</td>
+<td>46.799667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">446</td>
+<td>UNIÃO</td>
+<td>eleito</td>
+<td>2024</td>
+<td>583</td>
+<td>1250</td>
+<td>46.640000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">28</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>2016</td>
+<td>1074</td>
+<td>2312</td>
+<td>46.453287</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">292</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>2008</td>
+<td>807</td>
+<td>1756</td>
+<td>45.956720</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30</td>
+<td>MDB</td>
+<td>eleito</td>
+<td>2024</td>
+<td>855</td>
+<td>1874</td>
+<td>45.624333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">291</td>
+<td>PSDB</td>
+<td>eleito</td>
+<td>2004</td>
+<td>880</td>
+<td>1936</td>
+<td>45.454545</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">279</td>
+<td>PSD</td>
+<td>eleito</td>
+<td>2012</td>
+<td>504</td>
+<td>1111</td>
+<td>45.364536</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">140</td>
+<td>PMDB</td>
+<td>eleito</td>
+<td>2012</td>
+<td>1040</td>
+<td>2298</td>
+<td>45.256745</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">169</td>
+<td>PP</td>
+<td>eleito</td>
+<td>2016</td>
+<td>513</td>
+<td>1138</td>
+<td>45.079086</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">179</td>
+<td>PPB</td>
+<td>eleito</td>
+<td>1996</td>
+<td>22</td>
+<td>49</td>
+<td>44.897959</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">100</td>
+<td>PFL</td>
+<td>eleito</td>
+<td>2004</td>
+<td>794</td>
+<td>1773</td>
+<td>44.782854</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>PFL</td>
+<td>eleito</td>
+<td>2000</td>
+<td>1035</td>
+<td>2313</td>
+<td>44.747082</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">168</td>
+<td>PP</td>
+<td>eleito</td>
+<td>2012</td>
+<td>485</td>
+<td>1092</td>
+<td>44.413919</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-41" class="cell" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> brasil_pref[<span class="op">~</span>brasil_pref[<span class="st">'sigla_partido'</span>].isin(partidos)],</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'ano'</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">'percentual'</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'sigla_partido'</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># marker='o',</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#color='gray',</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>[<span class="st">'gray'</span>],</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>paleta <span class="op">=</span> sns.color_palette(</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>[<span class="st">'green'</span>, <span class="st">'lightblue'</span>, <span class="st">'orange'</span>, <span class="st">'purple'</span>, <span class="st">'royalblue'</span>, <span class="st">'red'</span>]</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>partidos <span class="op">=</span> [<span class="st">'PT'</span>, <span class="st">'PSB'</span>, <span class="st">'PSD'</span>, <span class="st">'PSDB'</span>, <span class="st">'PP'</span>, <span class="st">'PMDB'</span>]</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>sns.lineplot(</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> brasil_pref[brasil_pref[<span class="st">'sigla_partido'</span>].isin(partidos)],</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'ano'</span>,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">'percentual'</span>,</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'sigla_partido'</span>,</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">'o'</span>,</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>paleta</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>plot.ylabel(<span class="st">'Percentual'</span>)</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>plot.xlabel(<span class="st">''</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>plot.legend(loc<span class="op">=</span>(<span class="fl">1.025</span>, <span class="fl">0.65</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="crisp-dm_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
