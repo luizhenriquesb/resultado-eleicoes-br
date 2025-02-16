@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1. Business Undestanding</title>
+<title>Resultados Eleitorais (1996-2024)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>1. Business Undestanding</strong></h1>
+<h1 class="title"><strong>Resultados Eleitorais (1996-2024)</strong></h1>
 </div>
 
 
@@ -99,14 +99,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Objetivo</strong>: Investigar o percentual de prefeitos e governadores eleitos por cada partido desde 2006 até 2024.</p>
+<section id="business-undestanding" class="level2">
+<h2 class="anchored" data-anchor-id="business-undestanding"><strong>1. Business Undestanding</strong></h2>
+<p><strong>Objetivo</strong>: Investigar o percentual de prefeitos eleitos por cada partido desde 1996 até 2024.</p>
+</section>
 <section id="data-undestanding" class="level2">
 <h2 class="anchored" data-anchor-id="data-undestanding"><strong>2. Data Undestanding</strong></h2>
 <section id="coleta-dos-dados" class="level3">
 <h3 class="anchored" data-anchor-id="coleta-dos-dados"><strong>Coleta dos Dados</strong></h3>
 <section id="bibliotecas" class="level4">
 <h4 class="anchored" data-anchor-id="bibliotecas">Bibliotecas</h4>
-<div id="cell-6" class="cell" data-execution_count="3">
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> basedosdados <span class="im">as</span> bd</span>
@@ -116,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importação" class="level4">
 <h4 class="anchored" data-anchor-id="importação">Importação</h4>
-<div id="cell-8" class="cell" data-execution_count="4">
+<div id="cell-9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">'''</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT * FROM `basedosdados.br_tse_eleicoes.resultados_candidato_municipio` </span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE cargo = 'prefeito' OR cargo = 'governador'</span></span>
@@ -136,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="descrição-dos-dados"><strong>Descrição dos Dados</strong></h3>
 <section id="colunas" class="level4">
 <h4 class="anchored" data-anchor-id="colunas">Colunas</h4>
-<div id="cell-11" class="cell" data-execution_count="5">
+<div id="cell-12" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -167,7 +170,7 @@ memory usage: 55.4+ MB</code></pre>
 </section>
 <section id="variáveis-contínuas" class="level4">
 <h4 class="anchored" data-anchor-id="variáveis-contínuas">Variáveis Contínuas</h4>
-<div id="cell-13" class="cell" data-execution_count="6">
+<div id="cell-14" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -240,7 +243,7 @@ memory usage: 55.4+ MB</code></pre>
 </section>
 <section id="variáveis-categóricas" class="level4">
 <h4 class="anchored" data-anchor-id="variáveis-categóricas">Variáveis Categóricas</h4>
-<div id="cell-15" class="cell" data-execution_count="7">
+<div id="cell-16" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">'object'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -338,7 +341,7 @@ memory usage: 55.4+ MB</code></pre>
 <section id="id-de-são-paulo-sp" class="level4">
 <h4 class="anchored" data-anchor-id="id-de-são-paulo-sp">ID de São Paulo (SP)</h4>
 <p>Vamos tentar encontrar o id do município de São Paulo (SP) por meio do resultado eleitoral de 2024. Sabemos que tivemos um segundo turno entre Ricardo Nunes (MDB) e Guilherme Boulos (PSOL). Com alguns filtros, podemos encontrar os resultados dessa disputa.</p>
-<div id="cell-19" class="cell" data-execution_count="8">
+<div id="cell-20" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>) <span class="op">&amp;</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'cargo'</span>] <span class="op">==</span> <span class="st">'prefeito'</span>) <span class="op">&amp;</span></span>
@@ -419,11 +422,11 @@ memory usage: 55.4+ MB</code></pre>
 </div>
 </div>
 <p><em>Voilà</em>! O id (IBGE) do município de São Paulo (SP) é “3550308”. Vamos salvá-lo em uma variável.</p>
-<div id="cell-21" class="cell" data-execution_count="9">
+<div id="cell-22" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>id_muni_sp <span class="op">=</span> <span class="st">"3550308"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Vamos, agora, analisar os resultados para as eleições de 2024 em São Paulo (SP).</p>
-<div id="cell-23" class="cell" data-execution_count="10">
+<div id="cell-24" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024 <span class="op">=</span> df[</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'id_municipio'</span>] <span class="op">==</span> id_muni_sp) <span class="op">&amp;</span> (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>].sort_values(by<span class="op">=</span><span class="st">'turno'</span>)</span>
@@ -691,7 +694,7 @@ memory usage: 55.4+ MB</code></pre>
 </div>
 </div>
 <p>Vamos ver o resultado eleitoral por partido.</p>
-<div id="cell-25" class="cell" data-execution_count="11">
+<div id="cell-26" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024.<span class="op">\</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    groupby([<span class="st">'sigla_partido'</span>, <span class="st">'resultado'</span>]).<span class="op">\</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    size().<span class="op">\</span></span>
@@ -789,7 +792,7 @@ memory usage: 55.4+ MB</code></pre>
 </div>
 </div>
 <p>Os resultados acima mostram um possível problema para a nossa análise. Em cidades onde houve 2º turno, o mesmo partido se repete duas vezes: uma para o resultado do primeiro turno e outra para o resultado do segundo turno. Nosso propósito é ver o percentual de eleitos e não eleito por partido, então se tiver tido 2T, precisamos retirar as linhas dos dois candidatos cujo resultado é “2º Turno”.</p>
-<div id="cell-27" class="cell" data-execution_count="12">
+<div id="cell-28" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>muni_sp_2024 <span class="op">=</span> muni_sp_2024[</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    muni_sp_2024[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    ]</span>
@@ -882,7 +885,7 @@ memory usage: 55.4+ MB</code></pre>
 <section id="estado-de-são-paulo-2024" class="level4">
 <h4 class="anchored" data-anchor-id="estado-de-são-paulo-2024">Estado de São Paulo (2024)</h4>
 <p>Agora, sim! Vamos ver o percentual de eleitos e não eleitos no Estado de São Paulo.</p>
-<div id="cell-30" class="cell" data-execution_count="13">
+<div id="cell-31" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtra somente as eleições de 2024 em SP e retira os resultados de 2º turno para não</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># poluir o percentual de eleitos x não eleitos</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>est_sp_2024 <span class="op">=</span> df[</span>
@@ -1065,7 +1068,7 @@ memory usage: 55.4+ MB</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="14">
+<div id="cell-32" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>maiores_perc <span class="op">=</span> est_sp_2024[</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    est_sp_2024[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    ].<span class="op">\</span></span>
@@ -1079,7 +1082,7 @@ memory usage: 55.4+ MB</code></pre>
        'PRD', 'MOBILIZA', 'PT'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="15">
+<div id="cell-33" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plot.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(</span>
@@ -1114,7 +1117,7 @@ memory usage: 55.4+ MB</code></pre>
 <section id="brasil-2024" class="level4">
 <h4 class="anchored" data-anchor-id="brasil-2024">Brasil (2024)</h4>
 <p>Agora vamos visualizar o percentual de prefeitos eleitos em 2024 por partido no Brasil inteiro!</p>
-<div id="cell-35" class="cell" data-execution_count="16">
+<div id="cell-36" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>brasil_2024 <span class="op">=</span> df[</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'ano'</span>] <span class="op">==</span> <span class="dv">2024</span>) <span class="op">&amp;</span> (df[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>]</span>
@@ -1353,7 +1356,7 @@ memory usage: 55.4+ MB</code></pre>
 <section id="brasil-1996-2024" class="level4">
 <h4 class="anchored" data-anchor-id="brasil-1996-2024">Brasil (1996-2024)</h4>
 <p>Vamos ver agora o percentual de aproveitamento de cada partido ao longo de toda a série histórica disponível.</p>
-<div id="cell-39" class="cell" data-execution_count="17">
+<div id="cell-40" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>brasil_pref <span class="op">=</span> df[</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'cargo'</span>] <span class="op">==</span> <span class="st">'prefeito'</span>) <span class="op">&amp;</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">'resultado'</span>] <span class="op">!=</span> <span class="st">'2º turno'</span>)</span>
@@ -1369,7 +1372,7 @@ memory usage: 55.4+ MB</code></pre>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>brasil_pref <span class="op">=</span> brasil_pref[brasil_pref[<span class="st">'resultado'</span>] <span class="op">==</span> <span class="st">'eleito'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-40" class="cell" data-execution_count="18">
+<div id="cell-41" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>brasil_pref.sort_values(by<span class="op">=</span><span class="st">'percentual'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
@@ -1574,7 +1577,7 @@ memory usage: 55.4+ MB</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-41" class="cell">
+<div id="cell-42" class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>partidos <span class="op">=</span> [<span class="st">'PT'</span>, <span class="st">'PSB'</span>, <span class="st">'PSD'</span>, <span class="st">'PSDB'</span>, <span class="st">'PP'</span>, <span class="st">'PMDB'</span>]</span>
